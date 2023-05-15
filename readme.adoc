@@ -20,6 +20,11 @@ see how to make reversible, hot-swappable PCB.
 The Choc mini version of the PCB is in link:choc-mini[] and the Choc v1
 version is in link:choc-v1[].
 
+== Releases
+
+Please download the latest gerber files for the key switch you need from
+https://github.com/axhixh/mini-kbd/releases[Releases]
+
 == Future Experiments
 
  * Replace the third thumb key with an encoder, EVQWGD001.
