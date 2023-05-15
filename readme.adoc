@@ -8,8 +8,9 @@ a keyboard from scratch.
 
 I had a bunch of https://www.waveshare.com/wiki/RP2040-Zero[RP2040 Zero]
 microcontrollers and Choc Mini switches to play with. Even though I am
-used to 34 keys and use it as my daily driver, I decided to build one
-with 36 keys because I can do that without using diodes.
+used to 34 keys, https://github.com/axhixh/haigha-mod[Haigha Mod], and 
+use it as my daily driver, I decided to build one with 36 keys because
+I can do that without using diodes.
 
 == Choc v1 vs Choc mini
 
@@ -19,6 +20,10 @@ see how to make reversible, hot-swappable PCB.
 
 The Choc mini version of the PCB is in link:choc-mini[] and the Choc v1
 version is in link:choc-v1[].
+
+image:images/choc-mini-pcb.png[Using Choc mini switches]
+
+image:images/choc-v1-pcb.png[Using Choc v1 swithes]
 
 == Releases
 
