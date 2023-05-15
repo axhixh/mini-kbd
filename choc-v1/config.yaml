@@ -1,0 +1,180 @@
+units:
+  kx: cx
+  ky: cy
+  padX: kx + 2
+  padY: ky + 2
+points:
+  zones:
+    matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [100, -100]
+        rotate: 8
+      columns:
+        pinky:
+          key:
+            spread: kx
+            splay: 8
+          rows:
+            bottom.mcu_pin: GP3
+            home.mcu_pin: GP10
+            top.mcu_pin: GP15
+        ring:
+          key:
+            spread: kx - 0.5
+            stagger: 6
+            splay: -8
+            origin: [0, -ky]
+          rows:
+            bottom.mcu_pin: GP4
+            home.mcu_pin: GP11
+            top.mcu_pin: GP26
+        middle:
+          key:
+            shift: [0.2, 0]
+            spread: kx - 0.5
+            stagger: ky/3
+            splay: -4
+            origin: [0, -ky]
+          rows:
+            bottom.mcu_pin: GP5
+            home.mcu_pin: GP12
+            top.mcu_pin: GP27
+        index:
+          key:
+            spread: kx
+            stagger: -ky/3
+            splay: -4
+            origin: [0, -ky]
+          rows:
+            bottom.mcu_pin: GP8
+            home.mcu_pin: GP13
+            top.mcu_pin: GP28
+        inner:
+          key:
+            spread: kx
+            stagger: -ky/6
+            origin: [0, -ky]
+          rows:
+            bottom.mcu_pin: GP9
+            home.mcu_pin: GP14
+            top.mcu_pin: GP29
+      rows:
+        bottom:
+          padding: ky
+        home:
+          padding: ky
+        top:
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-0.9kx,-1.2ky]
+      columns:
+        tucky:
+          key:
+            spread: kx
+            mcu_pin: GP7
+        middle:
+          key:
+            spread: kx + 1.8
+            splay: -13
+            stagger: -2
+            mcu_pin: GP6
+        reachy:
+          key:
+            spread: kx
+            splay: -8
+            origin: [-9, -9.5]
+            mcu_pin: GP2
+      rows:
+        only:
+          padding: ky
+outlines:
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5, ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_pinky_top
+          shift: [-0.46padX,0.45padY]
+        - ref: matrix_ring_top
+          shift: [-9,0.45padY]
+        - ref: matrix_middle_top
+          shift: [-0.44padX,0.45padY]
+        - ref: matrix_middle_top
+          shift: [0.44padX,0.45padY] 
+        - ref: matrix_inner_top
+          shift: [1.57padX,0.25padY]
+        - ref: matrix_inner_home
+          shift: [1.57padX, -padY]
+        - ref: matrix_inner_home
+          shift: [0.8padX, -padY]
+        - ref: thumb_middle_only
+          shift: [0.52padX,0.5padY]
+        - ref: thumb_reachy_only
+          shift: [0.465padX, 0.465padY]
+        - ref: thumb_reachy_only
+          shift: [0.465padX,-0.465padY]
+        - ref: thumb_middle_only
+          shift: [0.45padX, -0.45padY]
+        - ref: thumb_middle_only
+          shift: [-0.46padX, -0.47padY]
+        - ref: thumb_tucky_only
+          shift: [-0.45padX,-0.455padY]
+        - ref: matrix_pinky_bottom
+          shift: [-0.46padX,-0.9padY]
+      fillet: 2
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+pcbs:
+  mini:
+    outlines:
+      main:
+        outline: board        
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{mcu_pin}}"
+          to: GND
+      choc:
+        what: choc
+        where: true
+        adjust:
+          rotate: 180
+        params:
+          keycaps: true
+          reverse: true
+          from: "{{mcu_pin}}"
+          to: GND
+      trrs:
+        what: trrs
+        where:
+          ref: matrix_inner_home
+          shift: [1.47padX,-0.9padY]
+          rotate: -90
+        params:
+          reverse: true
+          symmetric: true
+          A: GND
+          B: GND
+          C: P3V3
+          D: GP1
+      mcu:
+        what: rp2040zero
+        where:
+          ref: matrix_inner_top
+          shift: [0.5padX, -1padY]
+        params:
+          reverse: true
+          GND: GND
+

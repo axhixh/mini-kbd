@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "rp2040-zero")(type "KiCad")(uri "/Users/ashish/development/keyboard/RP2040-Zero-Kicad")(options "")(descr ""))
+  (lib (name "mini")(type "KiCad")(uri "/Users/ashish/development/keyboard/mini")(options "")(descr ""))
+)
