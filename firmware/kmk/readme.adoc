@@ -1,0 +1,12 @@
+= Firmware for Mini-kbd
+
+Please visit https://kmkfw.io[KMk] to install KMK on the
+the controller. When the controller remounts, please copy
+the files in this folder to the root folder. Please delete
+`code.py` if it exists.
+
+Please edit `main.py` so that the `split_side` is set 
+correctly for each side.
+
+If you want to change the keymap, please edit `main.py` as
+necessary.

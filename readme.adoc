@@ -30,6 +30,11 @@ image:images/choc-v1-pcb.png[Using Choc v1 swithes]
 Please download the latest gerber files for the key switch you need from
 https://github.com/axhixh/mini-kbd/releases[Releases]
 
+== Firmware
+
+The `firmware` folder contains different firmwares for the board.
+Currently, it supports https://kmkfw.io[KMK]
+
 == Future Experiments
 
  * Replace the third thumb key with an encoder, EVQWGD001.
