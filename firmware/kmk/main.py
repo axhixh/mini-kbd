@@ -16,8 +16,8 @@ keyboard = KMKKeyboard()
 keyboard.modules.append(Layers())
 
 # comment one of these on each side
-#split_side = SplitSide.LEFT
-split_side = SplitSide.RIGHT
+split_side = SplitSide.LEFT
+#split_side = SplitSide.RIGHT
 split = Split(
     data_pin=board.GP1, 
     uart_flip=True,
@@ -69,6 +69,8 @@ combos.combos = [
 
    Chord((OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI), OS_LCTL_LSFT_LALT_LGUI, timeout=1000),
 ]
+
+keyboard.extensions.append(MediaKeys())
 
 # cleaner key names
 _______ = KC.TRNS
@@ -123,8 +125,6 @@ keyboard.keymap = [
       KC.VOLD, KC.MUTE, KC.VOLU, KC.TRNS, KC.NO, KC.RESET
     ]
   ]
-
-keyboard.extensions.append(MediaKeys())
 
 if __name__ == "__main__":
     keyboard.go()
