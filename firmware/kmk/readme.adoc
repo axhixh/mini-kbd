@@ -10,3 +10,9 @@ correctly for each side.
 
 If you want to change the keymap, please edit `main.py` as
 necessary.
+
+Please use an empty `boot.py` during development. Once you
+use the `boot.py` in this folder, the microcontroller will
+no longer be mounted as an external drive. If you want it
+to mount, then please press the outer-most, reachy, thumb
+key while connecting the keyboard to the computer.
