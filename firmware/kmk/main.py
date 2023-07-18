@@ -90,15 +90,15 @@ CUT     = KC.LGUI(KC.X)
 COPY    = KC.LGUI(KC.C)
 PASTE   = KC.LGUI(KC.V)
 
-FSCRN   = KC.LGUI(KC.LALT(KC.F))# spectacle full screen without maximizing or creating new desktop
-GUI_ALT = KC.LGUI(KC.LALT)
-SSHOT   = KC.LGUI(KC.LSFT(KC.N4)) # screenshot
-PRV_TAB = KC.LGUI(KC.LSFT(KC.LBRC))
-NXT_TAB = KC.LGUI(KC.LSFT(KC.RBRC))
-PRV_WND = KC.LGUI(KC.GRV)
-ZOOM_P  = KC.LGUI(KC.EQL)
-ZOOM_0  = KC.LGUI(KC.N0)
-ZOOM_M  = KC.LGUI(KC.MINS)
+FSCRN     = KC.LCTRL(KC.LALT(KC.F))# rectangle - full screen without maximizing or creating new desktop
+WM_LEADER = KC.LCTRL(KC.LALT)
+SSHOT     = KC.LGUI(KC.LSFT(KC.N4)) # screenshot
+PRV_TAB   = KC.LGUI(KC.LSFT(KC.LBRC))
+NXT_TAB   = KC.LGUI(KC.LSFT(KC.RBRC))
+PRV_WND   = KC.LGUI(KC.GRV)
+ZOOM_P    = KC.LGUI(KC.EQL)
+ZOOM_0    = KC.LGUI(KC.N0)
+ZOOM_M    = KC.LGUI(KC.MINS)
 
 keyboard.keymap = [
     [
@@ -110,7 +110,7 @@ keyboard.keymap = [
     [
       LOCK, KC.MB_RMB, KC.MS_UP, KC.MB_LMB, KC.MW_UP, KC.PGUP, KC.HOME, KC.UP, KC.END, KC.DEL,
       PRV_WND, KC.MS_LT, KC.MS_DN, KC.MS_RT, KC.MW_DN, KC.PGDN, KC.LEFT, KC.DOWN, KC.RGHT, KC.BSPC,
-      KC.CW, BREAK, OS_LALT, OS_LCTL, GUI_ALT, PRV_TAB, NXT_TAB, FSCRN, KC.INS, UNDO,
+      KC.CW, BREAK, OS_LALT, OS_LCTL, WM_LEADER, PRV_TAB, NXT_TAB, FSCRN, KC.INS, UNDO,
       KC.RESET, KC.NO, KC.TRNS, SSHOT, KC.TAB, KC.CW
     ],
     [
