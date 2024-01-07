@@ -13,7 +13,7 @@ module.exports = {
     return `
       (footprint "AdamTech_MDJ-004-FS_reversible"
         (version 1)
-        (generator "transformed by  ashish")
+        (generator "transformed by axhixh")
         (layer "F.Cu")
         (tags "Mini DIN 4 Pins Right Angle Female Socket Through-Hole Soldered")
         ${p.at /* parametric positioin */}
