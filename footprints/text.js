@@ -2,6 +2,8 @@
 //
 // Description:
 // Allows oyu to place text on the PCB.
+//
+// axhixh: updated to support different sizes
 
 module.exports = {
   params: {
