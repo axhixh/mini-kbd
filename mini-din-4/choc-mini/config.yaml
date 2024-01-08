@@ -1,0 +1,204 @@
+meta:
+  engine: 4.0.4
+  name: minikbd
+  version: 2
+  author: AshishShrestha
+  url: https://github.com/axhixh/mini-kbd
+  tags: ["wired", "split", "low-profile"]
+
+units:
+  kx: cx
+  ky: cy
+  padX: kx + 2
+  padY: ky + 2
+points:
+  zones:
+    matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [100, -100]
+        rotate: 8
+      columns:
+        pinky:
+          key:
+            spread: kx
+            splay: 8
+          rows:
+            bottom.mcu_pin: GP3
+            home.mcu_pin: GP10
+            top.mcu_pin: GP15
+        ring:
+          key:
+            spread: kx - 0.5
+            stagger: 6
+            splay: -8
+            origin: [0, -ky]
+          rows:
+            bottom.mcu_pin: GP4
+            home.mcu_pin: GP11
+            top.mcu_pin: GP26
+        middle:
+          key:
+            shift: [0.2, 0]
+            spread: kx - 0.5
+            stagger: ky/3
+            splay: -4
+            origin: [0, -ky]
+          rows:
+            bottom.mcu_pin: GP5
+            home.mcu_pin: GP12
+            top.mcu_pin: GP27
+        index:
+          key:
+            spread: kx
+            stagger: -ky/3
+            splay: -4
+            origin: [0, -ky]
+          rows:
+            bottom.mcu_pin: GP8
+            home.mcu_pin: GP13
+            top.mcu_pin: GP28
+        inner:
+          key:
+            spread: kx
+            stagger: -ky/6
+            origin: [0, -ky]
+          rows:
+            bottom.mcu_pin: GP9
+            home.mcu_pin: GP14
+            top.mcu_pin: GP29
+      rows:
+        bottom:
+          padding: ky
+        home:
+          padding: ky
+        top:
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-0.9kx,-1.2ky]
+      columns:
+        tucky:
+          key:
+            spread: kx
+            mcu_pin: GP7
+        middle:
+          key:
+            spread: kx + 1.8
+            splay: -13
+            stagger: -2
+            mcu_pin: GP6
+        reachy:
+          key:
+            spread: kx
+            splay: -8
+            origin: [-9, -9.5]
+            mcu_pin: GP2
+      rows:
+        only:
+          padding: ky
+outlines:
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5, ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_pinky_top
+          shift: [-0.46padX,0.45padY]
+        - ref: matrix_ring_top
+          shift: [-9,0.45padY]
+        - ref: matrix_middle_top
+          shift: [-0.44padX,0.45padY]
+        - ref: matrix_middle_top
+          shift: [0.44padX,0.45padY] 
+        - ref: matrix_inner_top
+          shift: [1.57padX,0.25padY]
+        - ref: thumb_middle_only
+          shift: [1.33padX,0.38padY]
+        - ref: thumb_reachy_only
+          shift: [0.465padX, 0.465padY]
+        - ref: thumb_reachy_only
+          shift: [0.465padX,-0.465padY]
+        - ref: thumb_middle_only
+          shift: [0.45padX, -0.45padY]
+        - ref: thumb_middle_only
+          shift: [-0.46padX, -0.47padY]
+        - ref: thumb_tucky_only
+          shift: [-0.45padX,-0.455padY]
+        - ref: matrix_pinky_bottom
+          shift: [-0.46padX,-0.9padY]
+      fillet: 2
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+pcbs:
+  mini:
+    outlines:
+      main:
+        outline: board        
+    footprints:
+      choc_mini:
+        what: chocmini
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          from: "{{mcu_pin}}"
+          to: GND
+      connector:
+        what: adamtech_mdj_004_fs
+        where:
+          ref: matrix_inner_home
+          shift: [1.24padX,-padY]
+          rotate: -90
+        params:
+          reverse: true
+          GND1: GND
+          GND2: GND
+          VCC: P3V3
+          DATA: GP1
+      mcu:
+        what: rp2040zero
+        where:
+          ref: matrix_inner_top
+          shift: [0.5padX, -1padY]
+        params:
+          reverse: true
+          GND: GND
+      logo:
+        what: logo_icon
+        where:
+          ref: matrix_pinky_bottom
+          shift: [1.6padX, -0.7padY]      
+        params:
+          side: F  
+      logo_back:
+        what: logo_icon
+        where:
+          ref: matrix_pinky_bottom
+          shift: [1.6padX, -0.7padY]      
+        params:
+          side: B  
+      text:
+        what: text
+        where:
+          ref: thumb_tucky_only
+          shift: [-2.25padX, -0.2padY]
+        params:
+          reverse: true
+          text: 45h15h
+          height: 3
+          width: 5
+      link:
+        what: text
+        where:
+          ref: thumb_tucky_only
+          shift: [-2.2padX, -0.4padY]
+        params:
+          reverse: true
+          text: https://github.com/axhixh/mini-kbd
+          
