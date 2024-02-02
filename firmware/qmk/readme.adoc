@@ -1,0 +1,19 @@
+= QMK firmware for mini-kbd
+
+This is the code necessary to use QMK on mini-kbd. Please use this
+until I get it merged into QMK. This was tested with QMK with
+git commit a4b124e906de105189415f061d7e64a00e2271d9.
+
+Please copy `keyboards` to the `qmk_firmware` folder where you
+have checked out the code for QMK.
+
+Use the following command to build and flash the microcontroller.
+
+```
+    qmk flash -kb mini_kbd -km axhixh -bl uf2-split-right
+    qmk flash -kb mini_kbd -km axhixh -bl uf2-split-left
+```
+
+Please press the `BOOT` button on RP2040-Zero to it in bootloader
+mode. Once you have QMK you can do this by double tapping the
+`reset` button if you have set one in the keymap.
