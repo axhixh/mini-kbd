@@ -1,7 +1,5 @@
 = Mini Keyboard
 
-CAUTION: Here be Dragon
-
 
 This is my experiment with https://ergogen.xyz[Ergogen] and building
 a keyboard from scratch.
@@ -25,27 +23,40 @@ image:images/choc-mini-pcb.png[Using Choc mini switches]
 
 image:images/choc-v1-pcb.png[Using Choc v1 swithes]
 
+== TRRS vs 4 pin mini DIN 
+
+Inspired by the https://github.com/etiennecollin/wave[Wave Keyboard],
+I redesigned the keyboard to use 4 pin mini DIN used by S-video to
+protect the microcontroller from
+https://docs.qmk.fm/#/feature_split_keyboard?id=considerations[accidentally shorting].
+The layout of the key switches is the same between the different keyboards,
+the connection between the two halves is the only difference.
+
 == Releases
 
 Please download the latest gerber files for the key switch you need from
 https://github.com/axhixh/mini-kbd/releases[Releases]
 
-PCBs for Choc mini and Choc v1
+Remember PCB thickness of 1.6mm for Choc mini means the pins will not pass
+through the hole. I was fine with this since I use don't use a case. 
+
+PCB for Choc mini keyboard using 4 pin mini-DIN for connecting the halves.
+image:images/pcb_using_4_pin_din.jpg[Photo of PCB]
+
+PCBs for Choc mini and Choc v1 using TRRS.
 image:images/pcbs.jpg[Photo of PCBs]
 
+Built out keyboard with Choc mini.
+image:images/right_half.jpg[Right Half]
+image:images/keyboard_4_pin_din.jpg[Two halves with S-video cable]
+ 
 Built out keyboard with Choc Sunset and LDSA keycaps.
 image:images/mini-kbd.jpg[Photo of keyboard]
 
 == Firmware
 
 The `firmware` folder contains different firmwares for the board.
-Currently, it supports https://kmkfw.io[KMK]
-
-== Future Experiments
-
- * Replace the third thumb key with an encoder, EVQWGD001.
- * Use a https://shop.pimoroni.com/en-us/products/trackball-breakout[Pimoroni trackball]
-   as a pointer.
+Currently, it supports https://kmkfw.io[KMK] and https://docs.qmk.fm[QMK]
 
 == References
 
@@ -56,4 +67,6 @@ The RP2040 Zero footprint is a modified version of https://github.com/CountParad
 A possible improvement for future is to change it to have the origin in the center so
 that rotating the footprint is easier.
 
+The footprint for 4 pin mini-DIN is based on the one used in Wave keyboard.
+I translated it to Ergogen footprint. 
 

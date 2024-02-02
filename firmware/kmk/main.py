@@ -16,8 +16,8 @@ keyboard = KMKKeyboard()
 keyboard.modules.append(Layers())
 
 # comment one of these on each side
-split_side = SplitSide.LEFT
-#split_side = SplitSide.RIGHT
+#split_side = SplitSide.LEFT
+split_side = SplitSide.RIGHT
 split = Split(
     data_pin=board.GP1, 
     uart_flip=True,
@@ -72,46 +72,57 @@ combos.combos = [
 
 keyboard.extensions.append(MediaKeys())
 
-# cleaner key names
-_______ = KC.TRNS
-XXXXXXX = KC.NO
-
 # layer taps
-L1_ESC = KC.LT(1, KC.ESC)
+L1_TAB = KC.LT(1, KC.TAB)
 L2_SPC = KC.LT(2, KC.SPC)
-L3_BSPC = KC.LT(3, KC.BSPC)
+L3_ESC = KC.LT(3, KC.ESC)
 
 # shortcuts
-BREAK   = KC.LCTRL(KC.C)
 LOCK    = KC.LCTRL(KC.LGUI(KC.Q))
 
-UNDO    = KC.LGUI(KC.Z)
-CUT     = KC.LGUI(KC.X)
-COPY    = KC.LGUI(KC.C)
-PASTE   = KC.LGUI(KC.V)
-
-FSCRN     = KC.LCTRL(KC.LALT(KC.F))# rectangle - full screen without maximizing or creating new desktop
-WM_LEADER = KC.LCTRL(KC.LALT)
 SSHOT     = KC.LGUI(KC.LSFT(KC.N4)) # screenshot
 PRV_TAB   = KC.LGUI(KC.LSFT(KC.LBRC))
 NXT_TAB   = KC.LGUI(KC.LSFT(KC.RBRC))
 PRV_WND   = KC.LGUI(KC.GRV)
 ZOOM_P    = KC.LGUI(KC.EQL)
-ZOOM_0    = KC.LGUI(KC.N0)
 ZOOM_M    = KC.LGUI(KC.MINS)
+
+# aerospace window manager shortcuts
+WM_UP = KC.LALT(KC.UP)
+WM_DOWN = KC.LALT(KC.DOWN)
+WM_LEFT = KC.LALT(KC.LEFT)
+WM_RIGHT = KC.LALT(KC.RIGHT)
+
+WM_SRVC = KC.LSFT(KC.LALT(KC.SCLN)) 
+WM_JOIN = KC.LSFT(KC.LALT(KC.SLSH)) 
+WM_NEXT = KC.LALT(KC.TAB)
+WM_NEXT_MNTR = KC.LSFT(KC.LALT(KC.TAB))
+WM_INC = KC.LSFT(KC.LALT(KC.EQL))
+WM_DEC = KC.LSFT(KC.LALT(KC.MINS))
+WM_STACK = KC.LCTRL(KC.LALT(KC.COMM))
+WM_TILE = KC.LCTRL(KC.LALT(KC.SLSH))
+
+WM_0 = KC.LCTRL(KC.LALT(KC.N0))
+WM_1 = KC.LCTRL(KC.LALT(KC.N1))
+WM_2 = KC.LCTRL(KC.LALT(KC.N2))
+WM_3 = KC.LCTRL(KC.LALT(KC.N3))
+WM_4 = KC.LCTRL(KC.LALT(KC.N4))
+WM_5 = KC.LCTRL(KC.LALT(KC.N5))
+WM_6 = KC.LCTRL(KC.LALT(KC.N6))
+WM_7 = KC.LCTRL(KC.LALT(KC.N7))
 
 keyboard.keymap = [
     [
       KC.Q, KC.W, KC.F, KC.P, KC.B, KC.J, KC.L, KC.U, KC.Y, KC.QUOT,
       KC.A, KC.R, KC.S, KC.T, KC.G, KC.M, KC.N, KC.E, KC.I, KC.O,
       KC.Z, KC.X, KC.C, KC.D, KC.V, KC.K, KC.H, KC.COMM, KC.DOT, KC.SLSH,
-      OS_LGUI, KC.ENT, L1_ESC, L3_BSPC, L2_SPC, OS_LSFT
+      OS_LGUI, KC.ENT, L1_TAB, L3_ESC, L2_SPC, OS_LSFT
     ],
     [
       LOCK, KC.MB_RMB, KC.MS_UP, KC.MB_LMB, KC.MW_UP, KC.PGUP, KC.HOME, KC.UP, KC.END, KC.DEL,
-      PRV_WND, KC.MS_LT, KC.MS_DN, KC.MS_RT, KC.MW_DN, KC.PGDN, KC.LEFT, KC.DOWN, KC.RGHT, KC.BSPC,
-      KC.CW, BREAK, OS_LALT, OS_LCTL, WM_LEADER, PRV_TAB, NXT_TAB, FSCRN, KC.INS, UNDO,
-      KC.RESET, KC.NO, KC.TRNS, SSHOT, KC.TAB, KC.CW
+      KC.HYPR, KC.MS_LT, KC.MS_DN, KC.MS_RT, KC.MW_DN, KC.PGDN, KC.LEFT, KC.DOWN, KC.RGHT, KC.BSPC,
+      ZOOM_P, ZOOM_M, OS_LALT, OS_LCTL, KC.CW, PRV_TAB, NXT_TAB, PRV_WND, KC.INS, SSHOT,
+      KC.RESET, KC.NO, KC.TRNS, KC.VOLU, KC.MUTE, KC.VOLD
     ],
     [
       KC.EXLM, KC.AT, KC.HASH, KC.DLR, KC.PERC, KC.PLUS, KC.EQL, KC.ASTR, KC.UNDS, KC.TILD,
@@ -120,10 +131,10 @@ keyboard.keymap = [
       KC.AMPR, KC.SCLN, KC.COLN, KC.NO, KC.TRNS, KC.RESET
     ],
     [
-      KC.F1, KC.F2, KC.F3, KC.F4, ZOOM_P, KC.VOLU, KC.BRIU, KC.NO, KC.NO, KC.NO, 
-      KC.F5, KC.F6, KC.F7, KC.F8, ZOOM_0, KC.MUTE, KC.NO, KC.NO, KC.NO, KC.NO,
-      KC.F9, KC.F10, KC.F11, KC.F12, ZOOM_M, KC.VOLD, KC.BRID, KC.NO, KC.NO, KC.NO,
-      CUT, COPY, PASTE, KC.TRNS, KC.NO, KC.RESET
+      KC.F1, KC.F2, KC.F3, KC.F4, WM_SRVC, WM_UP, WM_0, WM_1, WM_2, WM_3, 
+      KC.F5, KC.F6, KC.F7, KC.F8, WM_JOIN, WM_DOWN, WM_4, WM_5, WM_6, WM_7,
+      KC.F9, KC.F10, KC.F11, KC.F12, WM_NEXT, WM_LEFT, WM_RIGHT, WM_INC, WM_DEC, WM_NEXT_MNTR,
+      WM_STACK, WM_TILE, KC.LSFT, KC.TRNS, KC.NO, KC.RESET
     ]
   ]
 
