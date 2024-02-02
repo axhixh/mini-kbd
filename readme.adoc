@@ -37,6 +37,9 @@ the connection between the two halves is the only difference.
 Please download the latest gerber files for the key switch you need from
 https://github.com/axhixh/mini-kbd/releases[Releases]
 
+Remember PCB thickness of 1.6mm for Choc mini means the pins will not pass
+through the hole. I was fine with this since I use don't use a case. 
+
 PCB for Choc mini keyboard using 4 pin mini-DIN for connecting the halves.
 image:images/pcb_using_4_pin_din.jpg[Photo of PCB]
 
