@@ -1,8 +1,0 @@
-= Mini Keyboard
-
-The keyboards under this directory use 4 pin mini DIN connectors
-instead of TRRS to connect the two half.
-
-Reference:
-
-https://github.com/etiennecollin/wave[Wave Keyboard]
